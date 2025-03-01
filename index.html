@@ -60,6 +60,9 @@
       line-height: 1.6;
       max-height: 200px;
       overflow-y: auto;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      box-sizing: border-box;
     }
     .result-item {
       margin-bottom: 10px;
@@ -69,7 +72,7 @@
         flex-direction: column;
         width: calc(100% - 40px);
       }
-      .dropdown-container {
+      .dropdown-container, .result {
         width: 100%;
         margin-right: 0;
       }
@@ -79,7 +82,11 @@
       .result {
         margin-top: 10px;
         width: 100%;
-        margin-left: 0;
+        max-height: 150px;
+      }
+      .result-item {
+        width: 100%;
+        white-space: normal;
       }
     }
   </style>
