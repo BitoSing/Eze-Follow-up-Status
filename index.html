@@ -58,6 +58,8 @@
       border-radius: 4px;
       color: #333;
       line-height: 1.6;
+      max-height: 200px;
+      overflow-y: auto;
     }
     .result-item {
       margin-bottom: 10px;
@@ -149,6 +151,7 @@
       if (data[selectedValue]) {
         result.innerHTML = data[selectedValue]
           .map((item) => `<div class="result-item">${item}</div>`)
+          .slice(0, 5)
           .join("");
       } else {
         result.innerHTML = "";
