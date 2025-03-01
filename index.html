@@ -16,23 +16,22 @@
       height: 100vh;
     }
     .container {
-      max-width: 800px;
+      width: 800px;
       margin: 20px;
       padding: 20px;
       background-color: #fff;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
     }
     h1 {
-      text-align: center;
       color: #333;
       font-size: 24px;
       margin-bottom: 20px;
     }
     select {
-      width: 100%;
+      width: 200px;
       padding: 10px;
       margin-top: 10px;
       border-radius: 4px;
@@ -44,7 +43,14 @@
     select:focus {
       border-color: #5cb85c;
     }
+    .dropdown-container {
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px;
+      width: 200px;
+    }
     .result {
+      flex-grow: 1;
       margin-top: 20px;
       padding: 15px;
       background-color: #e9f7ef;
@@ -56,25 +62,22 @@
     .result-item {
       margin-bottom: 10px;
     }
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 20px;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Follow Up Status</h1>
-    <select id="valueDropdown" onchange="showResult()">
-      <option value="">--Select an option--</option>
-      <option value="promise_to_pay">Promise to Pay</option>
-      <option value="in_progress">In Progress</option>
-      <option value="not_pickup_call">Not Pickup Call</option>
-      <option value="unreachable">Unreachable</option>
-      <option value="credit_note">Credit Note</option>
-      <option value="provision_debt">Provision-Debt</option>
-    </select>
+    <div class="dropdown-container">
+      <h1>Follow Up Status</h1>
+      <select id="valueDropdown" onchange="showResult()">
+        <option value="">--Select an option--</option>
+        <option value="promise_to_pay">Promise to Pay</option>
+        <option value="in_progress">In Progress</option>
+        <option value="not_pickup_call">Not Pickup Call</option>
+        <option value="unreachable">Unreachable</option>
+        <option value="credit_note">Credit Note</option>
+        <option value="provision_debt">Provision-Debt</option>
+      </select>
+    </div>
     <div id="result" class="result"></div>
   </div>
   <script>
