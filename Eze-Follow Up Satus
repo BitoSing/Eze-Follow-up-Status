@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown Menu</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+    h1 {
+      text-align: Left;
+      width: 100%;
+      color: #333;
+    }
+    select {
+      width: 200px;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    .result {
+      width: calc(100% - 150px);
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-left: 4px solid #5cb85c;
+      border-radius: 4px;
+      color: #333;
+      line-height: 1.6;
+    }
+    .result-item {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <h1>Follow Up Status</h1>
+      <select id="valueDropdown" onchange="showResult()">
+        <option value="">--Select an option--</option>
+        <option value="promise_to_pay">Promise to Pay</option>
+        <option value="in_progress">In Progress</option>
+        <option value="not_pickup_call">Not Pickup Call</option>
+        <option value="unreachable">Unreachable</option>
+        <option value="credit_note">Credit Note</option>
+        <option value="provision_debt">Provision-Debt</option>
+      </select>
+    </div>
+    <div id="result" class="result"></div>
+  </div>
+  <script>
+    function showResult() {
+      const result = document.getElementById("result");
+      const dropdown = document.getElementById("valueDropdown");
+      const selectedValue = dropdown.value;
+
+      const data = {
+        promise_to_pay: [
+          "Customer paid on invoice pending.",
+          "Customer confirmed to pay by Tel - 012456789.",
+          "Customer requested delay payment by Tel - 012456789."
+        ],
+        in_progress: [
+          "Consider to pay because Quality Connections by Tel - 012456789.",
+          "Consider to pay because House rental Tel - 012456789.",
+          "Consider to pay because Budget issues Tel - 012456789.",
+          "Consider to pay because Not the owner Tel - 012456789.",
+          "Consider to pay because Switching service providers Tel - 012456789.",
+          "Consider to pay because Lacking promotions/discount Tel - 012456789."
+        ],
+        not_pickup_call: [
+          "Not Pickup call, Tel - 012456789/0123456789.",
+          "Not Pickup call, done sent SMS reminder to Tel - 0123456789.",
+          "Not Pickup call, done sent SMS/Email reminder to Tel - 0123456789."
+        ],
+        unreachable: [
+          "Unreachable, Tel - 012456789/0123456789.",
+          "Unreachable, done sent SMS reminder to Tel - 0123456789.",
+          "Unreachable, done sent SMS/Email reminder to Tel - 0123456789."
+        ],
+        credit_note: [
+          "Graph Below 170GB - The customer break promise and reject to pay by Tel - 0123456789.",
+          "Graph Below 170GB - The customer not agree pay because of QoC by Tel - 0123456789.",
+          "Graph Below 170GB - The customer not agree pay because of Price Issues by Tel - 0123456789.",
+          "Graph Below 170GB - The customer not agree pay because of Movement by Tel - 0123456789.",
+          "Inv. No Graph - The customer break promise and reject to pay by Tel - 0123456789.",
+          "Inv. No Graph - The customer not agree pay because of QoC by Tel - 0123456789.",
+          "Inv. No Graph - The customer not agree pay because of Price Issues by Tel - 0123456789.",
+          "Inv. No Graph - The customer not agree pay because of Movement by Tel - 0123456789."
+        ],
+        provision_debt: [
+          "Graph Above 170GB - The customer break promise and reject to pay by Tel - 0123456789.",
+          "Graph Above 170GB - The customer not agree pay because of QoC by Tel - 0123456789.",
+          "Graph Above 170GB - The customer not agree pay because of Price Issues by Tel - 0123456789.",
+          "Graph Above 170GB - The customer not agree pay because of Movement by Tel - 0123456789."
+        ]
+      };
+
+      if (data[selectedValue]) {
+        result.innerHTML = data[selectedValue]
+          .map((item) => `<div class="result-item">${item}</div>`)
+          .join("");
+      } else {
+        result.innerHTML = "";
+      }
+    }
+  </script>
+</body>
+</html>
